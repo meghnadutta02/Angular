@@ -50,3 +50,63 @@
     <p>Unknown status.</p>
   }
 } -->
+<!-- 
+  =============================================
+  Angular Dynamic vs Static Styling & Attributes
+  =============================================
+
+  1️⃣ Normal HTML `class` / `style`:
+    - Static values only.
+    - Not reactive to component state changes.
+    - Example:
+        <button class="btn-primary" style="color: red;">Click</button>
+    - "btn-primary" and "color:red" are fixed, cannot change dynamically.
+
+  2️⃣ [ngClass] (dynamic class binding):
+    - Allows adding/removing classes based on boolean conditions.
+    - Reactive: updates automatically when component variables change.
+    - Example:
+        isActive = true;
+        hasError = false;
+
+        <button [ngClass]="{ 'active': isActive, 'error': hasError }">
+          Click Me
+        </button>
+    - Explanation:
+        * The class "active" will be added if `isActive` is true.
+        * The class "error" will be added if `hasError` is true.
+        * Multiple classes can be toggled simultaneously.
+        * This is equivalent to conditional classList manipulation in JS, but reactive.
+
+  3️⃣ [ngStyle] (dynamic inline styles):
+    - Allows applying CSS styles based on component variables.
+    - Example:
+        color = 'blue';
+        fontSize = '18px';
+
+        <p [ngStyle]="{ 'color': color, 'font-size': fontSize }">
+          Hello
+        </p>
+    - Styles automatically update when `color` or `fontSize` changes.
+
+  5️⃣ [disabled] vs plain disabled attribute:
+    - Plain HTML:
+        <button disabled>Click</button>  // always disabled
+    - Angular binding:
+        isDisabled = true;
+
+        <button [disabled]="isDisabled">Click</button>
+    - Explanation:
+        * Reactive: button enables/disables automatically when `isDisabled` changes.
+        * Use square brackets `[]` for dynamic expressions.
+        * Use plain `disabled` for static, always-disabled buttons.
+
+  6️⃣ When to use which:
+    - Use normal `class`/`style`/`disabled` for static, never-changing values.
+    - Use `[ngClass]` / `[ngStyle]` / `[disabled]` for dynamic/reactive values.
+    - This is especially useful with **signals or component state**.
+
+  ✅ Summary:
+    - `[ngClass]` and `[ngStyle]` → dynamic, reactive, conditional styling.
+    - `[disabled]` → dynamic enabling/disabling.
+    - Normal attributes → static values only. -->
