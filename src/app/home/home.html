@@ -1,0 +1,8 @@
+<p>home works!</p>
+<!-- for passing variables -->
+<app-greeting [message]="message()" />
+<!-- for passing hard coded values -->
+<!-- <app-greeting message="Hello World!" /> -->
+
+<app-counter [counter]="inputValue" />
+<input type="number" (input)="handleChange($event)" placeholder="Enter a number" />

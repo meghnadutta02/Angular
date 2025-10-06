@@ -1,15 +1,24 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+// import { Home } from './home/home';
+import { Header } from './components/header/header';
 
+// ng g component header   or ng g c header
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet,Header],
   template: `
-    <h1>Welcome to {{ title() }}!</h1>
+    <app-header/>
+    <main>
+      <router-outlet/> 
+    </main>
 
-    <router-outlet />
+     
+    
   `,
-  styles: [],
+  styles: [`main{
+      padding:16px
+    }`],
 })
 export class App {
   protected readonly title = signal('second-ng-app');

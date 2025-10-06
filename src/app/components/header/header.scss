@@ -1,0 +1,28 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // 16px padding on the left and right
+    padding-inline:16px;
+    // 8px padding on the top and bottom
+    padding-block: 8px;
+    background-color: #333;
+    color: white;
+    width:100vw;
+}
+
+header>h1{
+    cursor:pointer;
+}
+ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    
+}
+li:hover{
+    color:#777 ;
+    cursor:pointer
+}

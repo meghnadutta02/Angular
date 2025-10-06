@@ -1,0 +1,52 @@
+<h3>Todos List</h3>
+
+<form>
+  <label for="search">Filter Todos</label>
+  <input
+    type="text"
+    placeholder="Search todos..."
+    id="search"
+    [(ngModel)]="searchTerm"
+    name="search "
+  />
+</form>
+
+<form (ngSubmit)="onSubmit()" #addForm="ngForm">
+  <label for="add">Add a Todo</label>
+  <input type="text" placeholder="add title" id="add" [(ngModel)]="title" name="title" />
+  <button type="submit">Add</button>
+</form>
+
+@if (loading()) {
+<p>Loading...</p>
+} @else if (errorMessage()) {
+<p class="error">{{ errorMessage() }}</p>
+} @else if (todos().length === 0) {
+<p>No todos available!</p>
+} @else {
+<ul>
+  @for (todo of todos() | filterTodos:searchTerm(); track todo.id) {
+  <app-todo-item [todo]="todo" (toggle)="onToggle($event)"> </app-todo-item>
+  }
+</ul>
+}
+
+<!-- @if (isLoggedIn()) {
+  <p>Welcome back, user!</p>
+} @else {
+  <p>Please log in.</p>
+} -->
+<!-- @switch (status) {
+  @case ('loading') {
+    <p>Loading...</p>
+  }
+  @case ('success') {
+    <p>Data loaded successfully!</p>
+  }
+  @case ('error') {
+    <p>Something went wrong.</p>
+  }
+  @default {
+    <p>Unknown status.</p>
+  }
+} -->
